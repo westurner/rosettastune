@@ -1,9 +1,9 @@
 {
-    "chat.tools.terminal.autoApprove": {
-        "cargo test": true,
-        "cargo fmt": true,
-        "pytest": true,
-        "python": true,
-        "make": true
-    }
+    // "chat.tools.terminal.autoApprove": {
+    //     "cargo test": true,
+    //     "cargo fmt": true,
+    //     "pytest": true,
+    //     "python": true,
+    //     "make": true
+    // }
 }

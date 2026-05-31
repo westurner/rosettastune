@@ -1,0 +1,33 @@
+[build-system]
+requires = ["maturin>=1.7,<2", "setuptools>=68", "wheel"]
+build-backend = "maturin"
+
+[project]
+name = "rosettastune"
+version = "0.1.0"
+description = "RosettaStune: cross-schema physical units with a Rust core and optional Python unit libraries."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pytest-cov>=5"]
+pint = ["pint>=0.24"]
+astropy = ["astropy>=6"]
+sympy = ["sympy>=1.12"]
+dev = ["pytest>=8", "pytest-cov>=5", "pint>=0.24", "astropy>=6", "sympy>=1.12"]
+
+[tool.maturin]
+module-name = "rosettastune._rosettastune"
+python-source = "python"
+features = ["pyo3/extension-module"]
+
+[tool.pytest.ini_options]
+addopts = [
+	"-v",
+	"--cov=rosettastune",
+	"--cov-report=xml:coverage.xml",
+	"--junitxml=pytest-junit.xml",
+	"--cov-report=term-missing:skip-covered"
+]

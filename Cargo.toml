@@ -1,0 +1,22 @@
+[package]
+name = "rosettastune"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rosettastune"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pyo3 = { version = "0.22" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+
+[dev-dependencies]
+insta = { version = "1", features = ["json"] }
+
+[package.metadata.coverage]
+python_min = 100
+rust_min = 100
+

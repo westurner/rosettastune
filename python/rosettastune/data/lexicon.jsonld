@@ -1,0 +1,104 @@
+{
+  "@context": {
+    "qudt": "http://qudt.org/vocab/unit/",
+    "om": "http://www.ontology-of-units-of-measure.org/page/om-2/",
+    "unece": "urn:un:cefact:unit:",
+    "iof_adapter": "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/",
+    "stune": "https://rosettastune.local/schema#",
+    "canonical": "stune:canonical",
+    "dimension": "stune:dimension",
+    "aliases": "stune:aliases"
+  },
+  "@graph": [
+    {
+      "@id": "stune:kg",
+      "canonical": "kg",
+      "dimension": "mass",
+      "aliases": ["qudt:KILO_GM", "om:kilogram", "unece:KGM", "iof_adapter:mass/kg"]
+    },
+    {
+      "@id": "stune:g",
+      "canonical": "g",
+      "dimension": "mass",
+      "aliases": ["qudt:GM", "om:gram", "unece:GRM", "iof_adapter:mass/g"]
+    },
+    {
+      "@id": "stune:m",
+      "canonical": "m",
+      "dimension": "length",
+      "aliases": ["qudt:Meter", "om:metre", "unece:MTR", "iof_adapter:length/m"]
+    },
+    {
+      "@id": "stune:mm",
+      "canonical": "mm",
+      "dimension": "length",
+      "aliases": ["qudt:MilliM", "om:millimetre", "unece:MMT", "iof_adapter:length/mm"]
+    },
+    {
+      "@id": "stune:L",
+      "canonical": "L",
+      "dimension": "volume",
+      "aliases": ["qudt:L", "om:litre", "unece:LTR", "iof_adapter:volume/L"]
+    },
+    {
+      "@id": "stune:s",
+      "canonical": "s",
+      "dimension": "time",
+      "aliases": ["qudt:SEC", "om:second-Time", "unece:SEC", "iof_adapter:time/s"]
+    },
+    {
+      "@id": "stune:min",
+      "canonical": "min",
+      "dimension": "time",
+      "aliases": ["qudt:MIN", "om:minute-Time", "unece:MIN", "iof_adapter:time/min"]
+    },
+    {
+      "@id": "stune:h",
+      "canonical": "h",
+      "dimension": "time",
+      "aliases": ["qudt:HR", "om:hour", "unece:HUR", "iof_adapter:time/h"]
+    },
+    {
+      "@id": "stune:W",
+      "canonical": "W",
+      "dimension": "power",
+      "aliases": ["qudt:W", "om:watt", "unece:WTT", "iof_adapter:power/W"]
+    },
+    {
+      "@id": "stune:kW",
+      "canonical": "kW",
+      "dimension": "power",
+      "aliases": ["qudt:KiloW", "om:kilowatt", "unece:KWT", "iof_adapter:power/kW"]
+    },
+    {
+      "@id": "stune:kWh",
+      "canonical": "kWh",
+      "dimension": "energy",
+      "aliases": ["qudt:KiloW_HR", "om:kilowattHour", "unece:KWH", "iof_adapter:energy/kWh"]
+    },
+    {
+      "@id": "stune:Pa",
+      "canonical": "Pa",
+      "dimension": "pressure",
+      "aliases": ["qudt:PA", "om:pascal", "unece:PAL", "iof_adapter:pressure/Pa"]
+    },
+    {
+      "@id": "stune:J_per_kg",
+      "canonical": "J/kg",
+      "dimension": "specific_energy",
+      "aliases": ["qudt:J-PER-KiloGM", "om:joulePerKilogram", "iof_adapter:specific_energy/J_per_kg"]
+    },
+    {
+      "@id": "stune:degC",
+      "canonical": "degC",
+      "dimension": "temperature",
+      "aliases": ["qudt:DEG_C", "om:degreeCelsius", "unece:CEL", "iof_adapter:temperature/degC"]
+    },
+    {
+      "@id": "stune:K",
+      "canonical": "K",
+      "dimension": "temperature",
+      "aliases": ["qudt:K", "om:kelvin", "unece:KEL", "iof_adapter:temperature/K"]
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+---
+source: tests/lexicon_snapshot.rs
+expression: "registry.snapshot_entries().expect(\"snapshot should serialize\")"
+---
+[
+  {
+    "aliases": [
+      "stune:kg",
+      "https://rosettastune.local/schema#kg",
+      "kg",
+      "qudt:KILO_GM",
+      "http://qudt.org/vocab/unit/KILO_GM",
+      "om:kilogram",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/kilogram",
+      "unece:KGM",
+      "urn:un:cefact:unit:KGM",
+      "iof_adapter:mass/kg",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/mass/kg"
+    ],
+    "canonical": "kg",
+    "dimension": "mass",
+    "identifier": "stune:kg",
+    "iri": "https://rosettastune.local/schema#kg"
+  },
+  {
+    "aliases": [
+      "stune:g",
+      "https://rosettastune.local/schema#g",
+      "g",
+      "qudt:GM",
+      "http://qudt.org/vocab/unit/GM",
+      "om:gram",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/gram",
+      "unece:GRM",
+      "urn:un:cefact:unit:GRM",
+      "iof_adapter:mass/g",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/mass/g"
+    ],
+    "canonical": "g",
+    "dimension": "mass",
+    "identifier": "stune:g",
+    "iri": "https://rosettastune.local/schema#g"
+  },
+  {
+    "aliases": [
+      "stune:m",
+      "https://rosettastune.local/schema#m",
+      "m",
+      "qudt:Meter",
+      "http://qudt.org/vocab/unit/Meter",
+      "om:metre",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/metre",
+      "unece:MTR",
+      "urn:un:cefact:unit:MTR",
+      "iof_adapter:length/m",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/length/m"
+    ],
+    "canonical": "m",
+    "dimension": "length",
+    "identifier": "stune:m",
+    "iri": "https://rosettastune.local/schema#m"
+  },
+  {
+    "aliases": [
+      "stune:mm",
+      "https://rosettastune.local/schema#mm",
+      "mm",
+      "qudt:MilliM",
+      "http://qudt.org/vocab/unit/MilliM",
+      "om:millimetre",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/millimetre",
+      "unece:MMT",
+      "urn:un:cefact:unit:MMT",
+      "iof_adapter:length/mm",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/length/mm"
+    ],
+    "canonical": "mm",
+    "dimension": "length",
+    "identifier": "stune:mm",
+    "iri": "https://rosettastune.local/schema#mm"
+  },
+  {
+    "aliases": [
+      "stune:L",
+      "https://rosettastune.local/schema#L",
+      "L",
+      "qudt:L",
+      "http://qudt.org/vocab/unit/L",
+      "om:litre",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/litre",
+      "unece:LTR",
+      "urn:un:cefact:unit:LTR",
+      "iof_adapter:volume/L",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/volume/L"
+    ],
+    "canonical": "L",
+    "dimension": "volume",
+    "identifier": "stune:L",
+    "iri": "https://rosettastune.local/schema#L"
+  },
+  {
+    "aliases": [
+      "stune:s",
+      "https://rosettastune.local/schema#s",
+      "s",
+      "qudt:SEC",
+      "http://qudt.org/vocab/unit/SEC",
+      "om:second-Time",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/second-Time",
+      "unece:SEC",
+      "urn:un:cefact:unit:SEC",
+      "iof_adapter:time/s",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/time/s"
+    ],
+    "canonical": "s",
+    "dimension": "time",
+    "identifier": "stune:s",
+    "iri": "https://rosettastune.local/schema#s"
+  },
+  {
+    "aliases": [
+      "stune:min",
+      "https://rosettastune.local/schema#min",
+      "min",
+      "qudt:MIN",
+      "http://qudt.org/vocab/unit/MIN",
+      "om:minute-Time",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/minute-Time",
+      "unece:MIN",
+      "urn:un:cefact:unit:MIN",
+      "iof_adapter:time/min",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/time/min"
+    ],
+    "canonical": "min",
+    "dimension": "time",
+    "identifier": "stune:min",
+    "iri": "https://rosettastune.local/schema#min"
+  },
+  {
+    "aliases": [
+      "stune:h",
+      "https://rosettastune.local/schema#h",
+      "h",
+      "qudt:HR",
+      "http://qudt.org/vocab/unit/HR",
+      "om:hour",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/hour",
+      "unece:HUR",
+      "urn:un:cefact:unit:HUR",
+      "iof_adapter:time/h",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/time/h"
+    ],
+    "canonical": "h",
+    "dimension": "time",
+    "identifier": "stune:h",
+    "iri": "https://rosettastune.local/schema#h"
+  },
+  {
+    "aliases": [
+      "stune:W",
+      "https://rosettastune.local/schema#W",
+      "W",
+      "qudt:W",
+      "http://qudt.org/vocab/unit/W",
+      "om:watt",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/watt",
+      "unece:WTT",
+      "urn:un:cefact:unit:WTT",
+      "iof_adapter:power/W",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/power/W"
+    ],
+    "canonical": "W",
+    "dimension": "power",
+    "identifier": "stune:W",
+    "iri": "https://rosettastune.local/schema#W"
+  },
+  {
+    "aliases": [
+      "stune:kW",
+      "https://rosettastune.local/schema#kW",
+      "kW",
+      "qudt:KiloW",
+      "http://qudt.org/vocab/unit/KiloW",
+      "om:kilowatt",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/kilowatt",
+      "unece:KWT",
+      "urn:un:cefact:unit:KWT",
+      "iof_adapter:power/kW",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/power/kW"
+    ],
+    "canonical": "kW",
+    "dimension": "power",
+    "identifier": "stune:kW",
+    "iri": "https://rosettastune.local/schema#kW"
+  },
+  {
+    "aliases": [
+      "stune:kWh",
+      "https://rosettastune.local/schema#kWh",
+      "kWh",
+      "qudt:KiloW_HR",
+      "http://qudt.org/vocab/unit/KiloW_HR",
+      "om:kilowattHour",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/kilowattHour",
+      "unece:KWH",
+      "urn:un:cefact:unit:KWH",
+      "iof_adapter:energy/kWh",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/energy/kWh"
+    ],
+    "canonical": "kWh",
+    "dimension": "energy",
+    "identifier": "stune:kWh",
+    "iri": "https://rosettastune.local/schema#kWh"
+  },
+  {
+    "aliases": [
+      "stune:Pa",
+      "https://rosettastune.local/schema#Pa",
+      "Pa",
+      "qudt:PA",
+      "http://qudt.org/vocab/unit/PA",
+      "om:pascal",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/pascal",
+      "unece:PAL",
+      "urn:un:cefact:unit:PAL",
+      "iof_adapter:pressure/Pa",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/pressure/Pa"
+    ],
+    "canonical": "Pa",
+    "dimension": "pressure",
+    "identifier": "stune:Pa",
+    "iri": "https://rosettastune.local/schema#Pa"
+  },
+  {
+    "aliases": [
+      "stune:J_per_kg",
+      "https://rosettastune.local/schema#J_per_kg",
+      "J/kg",
+      "qudt:J-PER-KiloGM",
+      "http://qudt.org/vocab/unit/J-PER-KiloGM",
+      "om:joulePerKilogram",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/joulePerKilogram",
+      "iof_adapter:specific_energy/J_per_kg",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/specific_energy/J_per_kg"
+    ],
+    "canonical": "J/kg",
+    "dimension": "specific_energy",
+    "identifier": "stune:J_per_kg",
+    "iri": "https://rosettastune.local/schema#J_per_kg"
+  },
+  {
+    "aliases": [
+      "stune:degC",
+      "https://rosettastune.local/schema#degC",
+      "degC",
+      "qudt:DEG_C",
+      "http://qudt.org/vocab/unit/DEG_C",
+      "om:degreeCelsius",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/degreeCelsius",
+      "unece:CEL",
+      "urn:un:cefact:unit:CEL",
+      "iof_adapter:temperature/degC",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/temperature/degC"
+    ],
+    "canonical": "degC",
+    "dimension": "temperature",
+    "identifier": "stune:degC",
+    "iri": "https://rosettastune.local/schema#degC"
+  },
+  {
+    "aliases": [
+      "stune:K",
+      "https://rosettastune.local/schema#K",
+      "K",
+      "qudt:K",
+      "http://qudt.org/vocab/unit/K",
+      "om:kelvin",
+      "http://www.ontology-of-units-of-measure.org/page/om-2/kelvin",
+      "unece:KEL",
+      "urn:un:cefact:unit:KEL",
+      "iof_adapter:temperature/K",
+      "https://spec.industrialontologies.org/ontology/core/Core/unit-adapter/temperature/K"
+    ],
+    "canonical": "K",
+    "dimension": "temperature",
+    "identifier": "stune:K",
+    "iri": "https://rosettastune.local/schema#K"
+  }
+]

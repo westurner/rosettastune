@@ -1,0 +1,149 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: llvm-tools-preview
+
+      - name: Install cargo-llvm-cov
+        run: cargo install --locked cargo-llvm-cov
+        #uses: taiki-e/install-action@cargo-llvm-cov
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Build Tools
+        run: python -m pip install --upgrade pip maturin
+
+      - name: Read Coverage Thresholds
+        run: |
+          python - <<'PY'
+          import os
+          import tomllib
+          from pathlib import Path
+
+          cargo = tomllib.loads(Path("Cargo.toml").read_text())
+          coverage = cargo["package"]["metadata"]["coverage"]
+
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+            f.write(f"PYTHON_COVERAGE_MIN={coverage['python_min']}\n")
+            f.write(f"RUST_COVERAGE_MIN={coverage['rust_min']}\n")
+          PY
+
+      - name: Build Extension In Env
+        run: maturin develop --extras dev
+
+      - name: Rust Format Check
+        run: cargo fmt --check
+
+      - name: Rust Tests
+        run: cargo test
+
+      - name: Rust Coverage Check
+        run: |
+          cargo llvm-cov \
+            --workspace \
+            --all-features \
+            --summary-only \
+            --lcov \
+            --output-path rust-coverage.lcov \
+            --fail-under-lines "${RUST_COVERAGE_MIN}" | tee rust-coverage.txt
+
+      - name: Python Tests
+        run: |
+          pytest -v tests/ \
+            --cov=rosettastune \
+            --cov-report=xml:coverage.xml \
+            --junitxml=pytest-junit.xml \
+            --cov-report=term-missing:skip-covered \
+            --cov-fail-under="${PYTHON_COVERAGE_MIN}" | tee coverage.txt
+
+  release-assets:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: llvm-tools-preview
+
+      - name: Install cargo-llvm-cov
+        run: cargo install --locked cargo-llvm-cov
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Build Tools
+        run: python -m pip install --upgrade pip maturin
+
+      - name: Read Coverage Thresholds
+        run: |
+          python - <<'PY'
+          import os
+          import tomllib
+          from pathlib import Path
+
+          cargo = tomllib.loads(Path("Cargo.toml").read_text())
+          coverage = cargo["package"]["metadata"]["coverage"]
+
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+            f.write(f"PYTHON_COVERAGE_MIN={coverage['python_min']}\n")
+            f.write(f"RUST_COVERAGE_MIN={coverage['rust_min']}\n")
+          PY
+
+      - name: Build Extension In Env
+        run: maturin develop --extras dev
+
+      - name: Generate Coverage Artifacts
+        run: |
+          cargo llvm-cov \
+            --workspace \
+            --all-features \
+            --summary-only \
+            --lcov \
+            --output-path rust-coverage.lcov \
+            --fail-under-lines "${RUST_COVERAGE_MIN}" | tee rust-coverage.txt
+
+          pytest -v tests/ \
+            --cov=rosettastune \
+            --cov-report=xml:coverage.xml \
+            --junitxml=pytest-junit.xml \
+            --cov-report=term-missing:skip-covered \
+            --cov-fail-under="${PYTHON_COVERAGE_MIN}" | tee coverage.txt
+
+      - name: Upload Coverage To Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            pytest-junit.xml
+            coverage.xml
+            coverage.txt
+            rust-coverage.lcov
+            rust-coverage.txt

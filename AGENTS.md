@@ -82,3 +82,28 @@ Pull requests should keep all checks passing:
 - `cargo llvm-cov --fail-under-lines <rust_min>`
 
 Coverage thresholds are sourced from `Cargo.toml` under `[package.metadata.coverage]`.
+
+## Release Checklist
+
+Before publishing a release:
+
+1. Run local checks:
+
+```bash
+make ci
+```
+
+2. Confirm version metadata updates are complete (`Cargo.toml`, `pyproject.toml`).
+3. Confirm `[package.metadata.coverage]` thresholds in `Cargo.toml` are intended.
+4. Create and publish the GitHub release.
+
+After publishing:
+
+1. Verify the `release-assets` job in `.github/workflows/ci.yml` succeeds.
+2. Verify uploaded release artifacts include:
+  - `pytest-junit.xml`
+  - `coverage.xml`
+  - `coverage.txt`
+  - `rust-coverage.lcov`
+  - `rust-coverage.txt`
+3. If artifacts are missing, inspect CI logs for coverage gate failures or environment setup issues.

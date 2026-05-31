@@ -82,6 +82,29 @@ python -m pytest
 	- `rust-coverage.lcov`
 	- `rust-coverage.txt`
 
+## Release Checklist
+
+1. Confirm local checks pass:
+
+```bash
+make ci
+```
+
+2. Confirm coverage thresholds in `Cargo.toml` under `[package.metadata.coverage]` are intentional.
+3. Ensure version metadata is updated where needed (`Cargo.toml`, `pyproject.toml`).
+4. Push changes to `main` and create/publish a GitHub release tag.
+5. Wait for the `release-assets` job in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) to succeed.
+6. Verify release assets include:
+	- `pytest-junit.xml`
+	- `coverage.xml`
+	- `coverage.txt`
+	- `rust-coverage.lcov`
+	- `rust-coverage.txt`
+7. If release coverage/upload fails, inspect workflow logs for:
+	- missing `cargo-llvm-cov`
+	- coverage threshold failures
+	- pytest import/environment issues
+
 ## Troubleshooting
 
 - `ModuleNotFoundError: No module named rosettastune` while running tests:

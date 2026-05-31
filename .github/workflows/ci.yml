@@ -62,10 +62,15 @@ jobs:
           cargo llvm-cov \
             --workspace \
             --all-features \
-            --summary-only \
             --lcov \
-            --output-path rust-coverage.lcov \
+            --output-path rust-coverage.lcov
+
+          cargo llvm-cov report \
+            --summary-only \
             --fail-under-lines "${RUST_COVERAGE_MIN}" | tee rust-coverage.txt
+
+          echo "Rust coverage metrics:"
+          grep -E '^TOTAL' rust-coverage.txt
 
       - name: Python Tests
         run: |
@@ -124,10 +129,15 @@ jobs:
           cargo llvm-cov \
             --workspace \
             --all-features \
-            --summary-only \
             --lcov \
-            --output-path rust-coverage.lcov \
+            --output-path rust-coverage.lcov
+
+          cargo llvm-cov report \
+            --summary-only \
             --fail-under-lines "${RUST_COVERAGE_MIN}" | tee rust-coverage.txt
+
+          echo "Rust coverage metrics:"
+          grep -E '^TOTAL' rust-coverage.txt
 
           pytest -v tests/ \
             --cov=rosettastune \

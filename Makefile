@@ -49,7 +49,10 @@ coverage-python: ## Run Python coverage generation.
 .PHONY: coverage-rust
 coverage-rust: ## Run Rust coverage check (requires cargo-llvm-cov).
 	@echo "Generate Rust coverage summary and lcov artifact."
-	@cargo llvm-cov --workspace --all-features --summary-only --lcov --output-path rust-coverage.lcov
+	@cargo llvm-cov --workspace --all-features --lcov --output-path rust-coverage.lcov
+	@cargo llvm-cov report --summary-only | tee rust-coverage.txt
+	@echo "Rust coverage metrics:"
+	@grep -E '^TOTAL' rust-coverage.txt
 
 .PHONY: coverage
 coverage: ## Run Python and Rust coverage tasks.

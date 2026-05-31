@@ -259,3 +259,4 @@ __marimo__/
 coverage.txt
 coverage.xml
 pytest-junit.xml
+rust-coverage.txt

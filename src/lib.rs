@@ -111,10 +111,8 @@ impl LexiconRegistry {
     }
 
     pub fn snapshot_entries(&self) -> PyResult<serde_json::Value> {
-        Ok(
-            serde_json::to_value(&self.entries)
-                .expect("serializing lexicon entries to JSON value should not fail"),
-        )
+        Ok(serde_json::to_value(&self.entries)
+            .expect("serializing lexicon entries to JSON value should not fail"))
     }
 }
 
@@ -161,10 +159,8 @@ impl LexiconRegistry {
 
     #[pyo3(signature = (_unused = None))]
     fn as_json(&self, _unused: Option<bool>) -> PyResult<String> {
-        Ok(
-            serde_json::to_string_pretty(&self.entries)
-                .expect("serializing lexicon entries to JSON string should not fail"),
-        )
+        Ok(serde_json::to_string_pretty(&self.entries)
+            .expect("serializing lexicon entries to JSON string should not fail"))
     }
 }
 
@@ -213,8 +209,8 @@ mod tests {
 "#
     }
 
-        fn no_alias_lexicon() -> &'static str {
-                r#"
+    fn no_alias_lexicon() -> &'static str {
+        r#"
 {
     "@context": {
         "ex": "https://example.com/"
@@ -227,7 +223,7 @@ mod tests {
     ]
 }
 "#
-        }
+    }
 
     #[test]
     fn from_jsonld_str_parses_and_resolves_entries() {
@@ -237,9 +233,13 @@ mod tests {
         assert_eq!(resolved.canonical, "kg");
         assert_eq!(resolved.iri, "https://example.com/kg");
         assert_eq!(resolved.dimension.as_deref(), Some("mass"));
-        assert!(resolved.aliases.contains(&"https://example.com/kilogram".to_string()));
+        assert!(resolved
+            .aliases
+            .contains(&"https://example.com/kilogram".to_string()));
 
-        let resolved_meter = registry.resolve_identifier("https://example.com/meter").unwrap();
+        let resolved_meter = registry
+            .resolve_identifier("https://example.com/meter")
+            .unwrap();
         assert_eq!(resolved_meter.canonical, "m");
     }
 
@@ -290,7 +290,10 @@ mod tests {
         let mut context = HashMap::new();
         context.insert("ex".to_string(), "https://example.com/".to_string());
 
-        assert_eq!(expand_identifier("ex:item", &context), "https://example.com/item");
+        assert_eq!(
+            expand_identifier("ex:item", &context),
+            "https://example.com/item"
+        );
         assert_eq!(expand_identifier("unknown:item", &context), "unknown:item");
         assert_eq!(expand_identifier("plain", &context), "plain");
     }
@@ -314,7 +317,9 @@ mod tests {
         assert!(err.to_string().contains("unknown unit identifier"));
 
         let canonical_err = registry.canonical("missing").unwrap_err();
-        assert!(canonical_err.to_string().contains("unknown unit identifier"));
+        assert!(canonical_err
+            .to_string()
+            .contains("unknown unit identifier"));
     }
 
     #[test]
@@ -367,7 +372,8 @@ mod tests {
             assert_eq!(canonical, "kg");
 
             let resolved = registry.call_method1("resolve", ("ex:kg",)).unwrap();
-            let resolved_canonical: String = resolved.getattr("canonical").unwrap().extract().unwrap();
+            let resolved_canonical: String =
+                resolved.getattr("canonical").unwrap().extract().unwrap();
             assert_eq!(resolved_canonical, "kg");
 
             let known: Vec<String> = registry

@@ -31,8 +31,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Build Tools
-        run: python -m pip install --upgrade pip maturin
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
 
       - name: Read Coverage Thresholds
         run: |
@@ -48,9 +50,6 @@ jobs:
             f.write(f"PYTHON_COVERAGE_MIN={coverage['python_min']}\n")
             f.write(f"RUST_COVERAGE_MIN={coverage['rust_min']}\n")
           PY
-
-      - name: Build Extension In Env
-        run: maturin develop --extras dev
 
       - name: Rust Format Check
         run: cargo fmt --check
@@ -100,8 +99,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Build Tools
-        run: python -m pip install --upgrade pip maturin
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
 
       - name: Read Coverage Thresholds
         run: |
@@ -117,9 +118,6 @@ jobs:
             f.write(f"PYTHON_COVERAGE_MIN={coverage['python_min']}\n")
             f.write(f"RUST_COVERAGE_MIN={coverage['rust_min']}\n")
           PY
-
-      - name: Build Extension In Env
-        run: maturin develop --extras dev
 
       - name: Generate Coverage Artifacts
         run: |
